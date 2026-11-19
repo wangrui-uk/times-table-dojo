@@ -323,3 +323,29 @@ section { padding: 72px 0; position: relative; }
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* ---------- Store slides (App Store screenshots) ---------- */
+.slide {
+  width: 100%; max-width: 300px; margin: 0 auto;
+  border: 5px solid var(--ink); border-radius: 30px; overflow: hidden;
+  box-shadow: 0 9px 0 var(--ink), 0 22px 40px rgba(31, 42, 68, .18);
+  transform: rotate(var(--tilt, 2deg));
+  transition: transform .4s cubic-bezier(.3, 1.6, .5, 1);
+  background: var(--ink);
+}
+.slide:hover { transform: rotate(0deg) scale(1.03); }
+.slide img { width: 100%; height: auto; }
+.slide-wide { max-width: 900px; margin-top: 8px; border-radius: 26px; }
+.slide-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; align-items: start; }
+.slide-row figure { margin: 0; }
+.slide-row figcaption { margin-top: 26px; font-size: 1.02rem; padding: 16px 20px; }
+@media (max-width: 760px) {
+  .slide { max-width: 250px; }
+  .slide-row {
+    grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 78%;
+    overflow-x: auto; scroll-snap-type: x mandatory; padding: 12px 6px 24px; margin: 0 -14px;
+  }
+  .slide-row figure { scroll-snap-align: center; }
+  .slide-row .slide { max-width: 230px; }
+  .slide.slide-wide { max-width: 100%; border-radius: 18px; }
+}
